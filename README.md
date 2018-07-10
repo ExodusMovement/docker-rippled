@@ -1,3 +1,4 @@
-[Docker](https://docker.io/) image for [rippled](https://github.com/ripple/rippled/).
+![Docker Stars](https://img.shields.io/docker/stars/exodusmovement/rippled.svg?style=flat-square)
+![Docker Pulls](https://img.shields.io/docker/pulls/exodusmovement/rippled.svg?style=flat-square)
 
-Currently based on `Ubuntu 16.04`, because Alpine is not supported (?): https://github.com/ripple/rippled/issues/2048
+Ripple: https://github.com/ripple/rippled/
