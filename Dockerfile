@@ -44,6 +44,7 @@ EXPOSE 51235 5005
 
 WORKDIR /home/rippled
 
+RUN mkdir -p /home/rippled/xrpdb /home/rippled/config
 COPY --chown=rippled:rippled --from=builder /build/rippled .
 
 ENTRYPOINT ["./rippled"]
