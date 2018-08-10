@@ -19,7 +19,7 @@ RUN ./bootstrap.sh --with-libraries=chrono,context,coroutine,date_time,filesyste
 RUN ./b2 install link=shared -j$(nproc)
 
 WORKDIR /build
-RUN cmake ../rippled-1.0.1
+RUN cmake -DCMAKE_BUILD_TYPE=Release ../rippled-1.0.1
 RUN make -j$(nproc)
 RUN strip rippled
 
