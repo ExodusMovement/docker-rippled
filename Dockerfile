@@ -33,6 +33,7 @@ RUN apt update \
   && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/lib/libboost_* /usr/local/lib/
+COPY --from=builder /build/rippled /usr/local/bin/
 
 RUN groupadd --gid 1000 rippled \
   && useradd --uid 1000 --gid rippled --shell /bin/bash --create-home rippled
@@ -42,9 +43,4 @@ USER rippled
 # P2P && RPC
 EXPOSE 51235 5005
 
-WORKDIR /home/rippled
-
-RUN mkdir -p /home/rippled/xrpdb /home/rippled/config
-COPY --chown=rippled:rippled --from=builder /build/rippled .
-
-ENTRYPOINT ["./rippled"]
+CMD rippled
