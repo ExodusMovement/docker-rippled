@@ -10,3 +10,4 @@ Branches and releases:
   - [1.0.1](https://github.com/ExodusMovement/docker-rippled/tree/1.0.1)
     - [1.0.1-001](https://github.com/ExodusMovement/docker-rippled/tree/1.0.1-001)
     - [1.0.1-002](https://github.com/ExodusMovement/docker-rippled/tree/1.0.1-002)
+    - [1.0.1-003](https://github.com/ExodusMovement/docker-rippled/tree/1.0.1-003)
