@@ -1,25 +1,28 @@
 FROM ubuntu:18.04 AS builder
 
+ENV BUILD_TAG 1.1.0
+
 RUN apt update
 RUN apt install -y --no-install-recommends \
   build-essential \
   ca-certificates \
   cmake \
   doxygen \
+  git \
   libprotobuf-dev \
   libssl-dev \
   protobuf-compiler \
   wget
 
-RUN wget -qO- https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz | tar xz
-RUN wget -qO- https://github.com/ripple/rippled/archive/1.0.1.tar.gz | tar xz
+RUN wget -O- https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz | tar xz
+RUN wget -O- https://github.com/ripple/rippled/archive/$BUILD_TAG.tar.gz | tar xz
 
-WORKDIR /boost_1_67_0
+WORKDIR /boost_1_68_0
 RUN ./bootstrap.sh --with-libraries=chrono,context,coroutine,date_time,filesystem,program_options,regex,serialization,system,thread
 RUN ./b2 install link=shared -j$(nproc)
 
 WORKDIR /build
-RUN cmake -DCMAKE_BUILD_TYPE=Release ../rippled-1.0.1
+RUN cmake -DCMAKE_BUILD_TYPE=Release ../rippled-$BUILD_TAG
 RUN make -j$(nproc)
 RUN strip rippled
 
