@@ -1,7 +1,5 @@
 FROM ubuntu:18.04
 
-# Official instructions from
-# https://ripple.com/build/rippled-setup/#installation-on-ubuntu-with-alien
 RUN apt-get update
 RUN apt-get install -y yum-utils alien
 RUN rpm -Uvh https://mirrors.ripple.com/ripple-repo-el7.rpm
